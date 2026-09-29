@@ -145,6 +145,11 @@ namespace AdvancedMathCalculator
             Operator_Click(sender, e);
         }
 
-       
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            lblText.Text = "";
+            inputBox.Clear();
+
+        }
     }
 }

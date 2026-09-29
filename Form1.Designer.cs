@@ -30,6 +30,7 @@
         {
             this.inputBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDot = new System.Windows.Forms.Button();
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnDevide = new System.Windows.Forms.Button();
             this.btnMultiply = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
-            this.btnDot = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnClear);
             this.panel2.Controls.Add(this.btnDot);
             this.panel2.Controls.Add(this.btnEqual);
             this.panel2.Controls.Add(this.btnDevide);
@@ -85,6 +87,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(446, 385);
             this.panel2.TabIndex = 2;
+            // 
+            // btnDot
+            // 
+            this.btnDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDot.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnDot.Location = new System.Drawing.Point(18, 88);
+            this.btnDot.Name = "btnDot";
+            this.btnDot.Size = new System.Drawing.Size(66, 68);
+            this.btnDot.TabIndex = 15;
+            this.btnDot.Text = ".";
+            this.btnDot.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDot.UseVisualStyleBackColor = true;
+            this.btnDot.Click += new System.EventHandler(this.btnDot_Click);
             // 
             // btnEqual
             // 
@@ -281,18 +296,17 @@
             this.lblText.Size = new System.Drawing.Size(0, 29);
             this.lblText.TabIndex = 3;
             // 
-            // btnDot
+            // btnClear
             // 
-            this.btnDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDot.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDot.Location = new System.Drawing.Point(18, 88);
-            this.btnDot.Name = "btnDot";
-            this.btnDot.Size = new System.Drawing.Size(66, 68);
-            this.btnDot.TabIndex = 15;
-            this.btnDot.Text = ".";
-            this.btnDot.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDot.UseVisualStyleBackColor = true;
-            this.btnDot.Click += new System.EventHandler(this.btnDot_Click);
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClear.Location = new System.Drawing.Point(113, 88);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(66, 68);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "CE";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Home
             // 
@@ -337,6 +351,7 @@
         private System.Windows.Forms.Button btnMultiply;
         private System.Windows.Forms.Button btnEqual;
         private System.Windows.Forms.Button btnDot;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
