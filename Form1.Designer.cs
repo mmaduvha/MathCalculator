@@ -30,6 +30,7 @@
         {
             this.inputBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnDevide = new System.Windows.Forms.Button();
@@ -47,7 +48,7 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnPower = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnPower);
             this.panel2.Controls.Add(this.btnClear);
             this.panel2.Controls.Add(this.btnDot);
             this.panel2.Controls.Add(this.btnEqual);
@@ -87,6 +89,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(446, 385);
             this.panel2.TabIndex = 2;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClear.Location = new System.Drawing.Point(113, 88);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(66, 68);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "CE";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDot
             // 
@@ -296,17 +310,17 @@
             this.lblText.Size = new System.Drawing.Size(0, 29);
             this.lblText.TabIndex = 3;
             // 
-            // btnClear
+            // btnPower
             // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClear.Location = new System.Drawing.Point(113, 88);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(66, 68);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "CE";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPower.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnPower.Location = new System.Drawing.Point(202, 88);
+            this.btnPower.Name = "btnPower";
+            this.btnPower.Size = new System.Drawing.Size(66, 68);
+            this.btnPower.TabIndex = 17;
+            this.btnPower.Text = "[]^";
+            this.btnPower.UseVisualStyleBackColor = true;
+            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
             // 
             // Home
             // 
@@ -352,6 +366,7 @@
         private System.Windows.Forms.Button btnEqual;
         private System.Windows.Forms.Button btnDot;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnPower;
     }
 }
 

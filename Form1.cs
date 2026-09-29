@@ -32,7 +32,9 @@ namespace AdvancedMathCalculator
                 inputBox.Clear();
             }
             Button button = (Button)sender;
+
             inputBox.Text += button.Text;
+            lblText.Text += " " + button.Text;
             isOperationPerformed = false;
         }
 
@@ -103,6 +105,7 @@ namespace AdvancedMathCalculator
             operation = button.Text;
             result = Double.Parse(inputBox.Text);
             isOperationPerformed = true;
+
             lblText.Text = result + " " + operation;
         }
 
@@ -121,6 +124,9 @@ namespace AdvancedMathCalculator
                     break;
                 case "/":
                     inputBox.Text = (result / Double.Parse(inputBox.Text)).ToString();
+                    break;
+                case "^":
+                    inputBox.Text = Math.Pow(result, Double.Parse(inputBox.Text)).ToString();
                     break;
             }
         }
@@ -151,5 +157,20 @@ namespace AdvancedMathCalculator
             inputBox.Clear();
 
         }
+
+        //Split the process into two parts: store the base number when the power button is clicked,
+        //and execute Math.Pow when the equal button is pressed.
+
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+            result = Double.Parse(inputBox.Text);
+            operation = "^";
+            isOperationPerformed = true;
+
+            lblText.Text = result.ToString() + operation;
+        }
+
+        
     }
 }
