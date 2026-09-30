@@ -30,6 +30,7 @@
         {
             this.inputBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPower = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
             this.btnEqual = new System.Windows.Forms.Button();
@@ -48,7 +49,10 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
-            this.btnPower = new System.Windows.Forms.Button();
+            this.btnFoil = new System.Windows.Forms.Button();
+            this.btnOpenBracket = new System.Windows.Forms.Button();
+            this.btnCloseBracket = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +71,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnCloseBracket);
+            this.panel2.Controls.Add(this.btnOpenBracket);
+            this.panel2.Controls.Add(this.btnFoil);
             this.panel2.Controls.Add(this.btnPower);
             this.panel2.Controls.Add(this.btnClear);
             this.panel2.Controls.Add(this.btnDot);
@@ -90,8 +98,22 @@
             this.panel2.Size = new System.Drawing.Size(446, 385);
             this.panel2.TabIndex = 2;
             // 
+            // btnPower
+            // 
+            this.btnPower.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPower.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnPower.Location = new System.Drawing.Point(202, 88);
+            this.btnPower.Name = "btnPower";
+            this.btnPower.Size = new System.Drawing.Size(66, 68);
+            this.btnPower.TabIndex = 17;
+            this.btnPower.Text = "[]^";
+            this.btnPower.UseVisualStyleBackColor = false;
+            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
+            // 
             // btnClear
             // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnClear.Location = new System.Drawing.Point(113, 88);
@@ -99,11 +121,12 @@
             this.btnClear.Size = new System.Drawing.Size(66, 68);
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "CE";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDot
             // 
+            this.btnDot.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.btnDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDot.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDot.Location = new System.Drawing.Point(18, 88);
@@ -112,7 +135,7 @@
             this.btnDot.TabIndex = 15;
             this.btnDot.Text = ".";
             this.btnDot.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDot.UseVisualStyleBackColor = true;
+            this.btnDot.UseVisualStyleBackColor = false;
             this.btnDot.Click += new System.EventHandler(this.btnDot_Click);
             // 
             // btnEqual
@@ -310,17 +333,54 @@
             this.lblText.Size = new System.Drawing.Size(0, 29);
             this.lblText.TabIndex = 3;
             // 
-            // btnPower
+            // btnFoil
             // 
-            this.btnPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPower.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnPower.Location = new System.Drawing.Point(202, 88);
-            this.btnPower.Name = "btnPower";
-            this.btnPower.Size = new System.Drawing.Size(66, 68);
-            this.btnPower.TabIndex = 17;
-            this.btnPower.Text = "[]^";
-            this.btnPower.UseVisualStyleBackColor = true;
-            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
+            this.btnFoil.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnFoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnFoil.Location = new System.Drawing.Point(113, 14);
+            this.btnFoil.Name = "btnFoil";
+            this.btnFoil.Size = new System.Drawing.Size(155, 68);
+            this.btnFoil.TabIndex = 18;
+            this.btnFoil.Text = "FOIL";
+            this.btnFoil.UseVisualStyleBackColor = false;
+            this.btnFoil.Click += new System.EventHandler(this.btnFoil_Click);
+            // 
+            // btnOpenBracket
+            // 
+            this.btnOpenBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnOpenBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnOpenBracket.Location = new System.Drawing.Point(284, 88);
+            this.btnOpenBracket.Name = "btnOpenBracket";
+            this.btnOpenBracket.Size = new System.Drawing.Size(66, 68);
+            this.btnOpenBracket.TabIndex = 19;
+            this.btnOpenBracket.Text = "(";
+            this.btnOpenBracket.UseVisualStyleBackColor = false;
+            // 
+            // btnCloseBracket
+            // 
+            this.btnCloseBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnCloseBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCloseBracket.Location = new System.Drawing.Point(356, 88);
+            this.btnCloseBracket.Name = "btnCloseBracket";
+            this.btnCloseBracket.Size = new System.Drawing.Size(66, 68);
+            this.btnCloseBracket.TabIndex = 20;
+            this.btnCloseBracket.Text = ")";
+            this.btnCloseBracket.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(18, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(66, 68);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "x";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
@@ -367,6 +427,10 @@
         private System.Windows.Forms.Button btnDot;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnPower;
+        private System.Windows.Forms.Button btnFoil;
+        private System.Windows.Forms.Button btnOpenBracket;
+        private System.Windows.Forms.Button btnCloseBracket;
+        private System.Windows.Forms.Button button1;
     }
 }
 

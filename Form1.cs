@@ -16,6 +16,8 @@ namespace AdvancedMathCalculator
         double result;
         bool isOperationPerformed = false;
 
+        bool AdvancedMode = false; //false means basic mode, true means advanced mode
+
         public Home()
         {
             InitializeComponent();
@@ -27,70 +29,101 @@ namespace AdvancedMathCalculator
 
         private void Button_Click(object sender, EventArgs e)
         {
-            if (inputBox.Text == "0" || isOperationPerformed)
+            if (AdvancedMode == false)
             {
-                inputBox.Clear();
-            }
-            Button button = (Button)sender;
+                if (inputBox.Text == "0" || isOperationPerformed)
+                {
+                    inputBox.Clear();
+                }
+                Button button = (Button)sender;
 
-            inputBox.Text += button.Text;
-            lblText.Text += " " + button.Text;
-            isOperationPerformed = false;
+                inputBox.Text += button.Text;
+                lblText.Text += " " + button.Text;
+                isOperationPerformed = false;
+
+            }
+            
+        }
+
+        private void Operator_Click(object sender, EventArgs e)
+        {
+            if (AdvancedMode == false)
+            {
+                Button button = (Button)sender;
+                operation = button.Text;
+                result = Double.Parse(inputBox.Text);
+                isOperationPerformed = true;
+
+                lblText.Text = result + " " + operation;
+
+            }
+
         }
 
         private void btnOne_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnTwo_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnThree_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnFour_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnFive_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnSix_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnSeven_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);    
         }
 
         private void btnEight_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnNine_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnZero_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnDot_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
+            Expression_Click(sender, e);
 
             if (inputBox.Text.Contains("."))
             {
@@ -99,57 +132,61 @@ namespace AdvancedMathCalculator
             
         }
 
-        private void Operator_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            operation = button.Text;
-            result = Double.Parse(inputBox.Text);
-            isOperationPerformed = true;
-
-            lblText.Text = result + " " + operation;
-        }
+      
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            switch (operation)
+
+            if (AdvancedMode == false)
             {
-                case "+":
-                    inputBox.Text = (result + Double.Parse(inputBox.Text)).ToString();
-                    
-                    break;
-                case "-":
-                    inputBox.Text = (result - Double.Parse(inputBox.Text)).ToString();
-                    break;
-                case "*":
-                    inputBox.Text = (result * Double.Parse(inputBox.Text)).ToString();
-                    break;
-                case "/":
-                    inputBox.Text = (result / Double.Parse(inputBox.Text)).ToString();
-                    break;
-                case "^":
-                    inputBox.Text = Math.Pow(result, Double.Parse(inputBox.Text)).ToString();
-                    break;
+                switch (operation)
+                {
+                    case "+":
+                        inputBox.Text = (result + Double.Parse(inputBox.Text)).ToString();
+
+                        break;
+                    case "-":
+                        inputBox.Text = (result - Double.Parse(inputBox.Text)).ToString();
+                        break;
+                    case "*":
+                        inputBox.Text = (result * Double.Parse(inputBox.Text)).ToString();
+                        break;
+                    case "/":
+                        inputBox.Text = (result / Double.Parse(inputBox.Text)).ToString();
+                        break;
+                    case "^":
+                        inputBox.Text = Math.Pow(result, Double.Parse(inputBox.Text)).ToString();
+                        break;
+                }
+
             }
+            Expression_Click(sender, e);
+
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             Operator_Click(sender, e);
+            Expression_Click(sender, e);
+
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
             Operator_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnDevide_Click(object sender, EventArgs e)
         {
             Operator_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnMultiply_Click(object sender, EventArgs e)
         {
             Operator_Click(sender, e);
+            Expression_Click(sender, e);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -172,6 +209,39 @@ namespace AdvancedMathCalculator
             lblText.Text = result.ToString() + operation;
         }
 
-        
+        //foil button click event
+
+        private void btnFoil_Click(object sender, EventArgs e)
+        {
+            AdvancedMode = true;
+            inputBox.Clear();
+            lblText.Text = " "; 
+
+
+
+
+
+
+        }
+
+        private void Expression_Click(object sender, EventArgs e)
+        {
+            if (AdvancedMode == true)
+            {
+                Button button = (Button)sender;
+                inputBox.Text += button.Text;
+                if (lblText.Text == " ")
+                {
+                    lblText.Text = button.Text;
+                }
+                else
+                {
+                    lblText.Text += " " + button.Text;
+                }
+            }
+
+        }
+       
+
     }
 }
