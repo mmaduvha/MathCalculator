@@ -115,6 +115,7 @@ namespace AdvancedMathCalculator
             {
                 case "+":
                     inputBox.Text = (result + Double.Parse(inputBox.Text)).ToString();
+                    
                     break;
                 case "-":
                     inputBox.Text = (result - Double.Parse(inputBox.Text)).ToString();
