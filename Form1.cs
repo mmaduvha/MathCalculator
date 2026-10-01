@@ -1,270 +1,262 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
-//I haven't gone through the equation process here,
-//just showing the expression and having all the buttons be able to make an expression,
-//when foil is pressed
+
 namespace AdvancedMathCalculator
 {
     public partial class Home : Form
     {
-        string operation;
-        double result;
-        bool isOperationPerformed = false;
-
-        bool AdvancedMode = false; //false means basic mode, true means advanced mode
+        private string operation = "";
+        private double result = 0;
+        private bool isOperationPerformed = false;
+        private bool advancedMode = false;
 
         public Home()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
+        private void btnOne_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnTwo_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnThree_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnFour_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnFive_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnSix_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnSeven_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnEight_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnNine_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnZero_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnOpenBracket_Click(object sender, EventArgs e) => HandleInput(sender);
+        private void btnCloseBracket_Click_1(object sender, EventArgs e) => HandleInput(sender);
+        private void btnXvariable_Click(object sender, EventArgs e) => HandleInput(sender);
 
-        private void Button_Click(object sender, EventArgs e)
+        private void HandleInput(object sender)
         {
-            if (AdvancedMode == false)
+            Button button = (Button)sender;
+
+            if (!advancedMode)
             {
                 if (inputBox.Text == "0" || isOperationPerformed)
                 {
                     inputBox.Clear();
                 }
-                Button button = (Button)sender;
-
                 inputBox.Text += button.Text;
-                lblText.Text += " " + button.Text;
+                lblText.Text += button.Text;
                 isOperationPerformed = false;
-
             }
-            
-        }
-
-        private void Operator_Click(object sender, EventArgs e)
-        {
-            if (AdvancedMode == false)
+            else
             {
-                Button button = (Button)sender;
-                operation = button.Text;
-                result = Double.Parse(inputBox.Text);
-                isOperationPerformed = true;
-
-                lblText.Text = result + " " + operation;
-
-            }
-
-        }
-
-        private void Expression_Click(object sender, EventArgs e)
-        {
-            if (AdvancedMode == true)
-            {
-                Button button = (Button)sender;
-
-                //to display the expression on the label.
-
-                inputBox.Text = button.Text;
-                if (lblText.Text == " ")
+                if (inputBox.Text == "0")
                 {
-                    lblText.Text = button.Text;
+                    inputBox.Clear();
                 }
-                else
-                {
-                    lblText.Text += " " + button.Text;
-                }
-
-
+                inputBox.Text += button.Text;
+                lblText.Text = inputBox.Text;
             }
-        }
-
-        private void btnOne_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnTwo_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnThree_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnFour_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnFive_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnSix_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnSeven_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);    
-        }
-
-        private void btnEight_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnNine_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-        }
-
-        private void btnZero_Click(object sender, EventArgs e)
-        {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
         }
 
         private void btnDot_Click(object sender, EventArgs e)
         {
-            Button_Click(sender, e);
-            Expression_Click(sender, e);
-
-            if (inputBox.Text.Contains("."))
+            if (!inputBox.Text.Contains("."))
             {
-                return;
+                HandleInput(sender);
             }
-            
         }
 
-      
+        private void Operator_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (!advancedMode)
+            {
+                if (double.TryParse(inputBox.Text, out result))
+                {
+                    operation = button.Text;
+                    isOperationPerformed = true;
+                    lblText.Text = result + " " + operation + " ";
+                }
+            }
+            else
+            {
+                HandleInput(sender);
+            }
+        }
+
+        private void addButton_Click(object sender, EventArgs e) => Operator_Click(sender, e);
+        private void btnMinus_Click(object sender, EventArgs e) => Operator_Click(sender, e);
+        private void btnDevide_Click(object sender, EventArgs e) => Operator_Click(sender, e);
+        private void btnMultiply_Click(object sender, EventArgs e) => Operator_Click(sender, e);
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+            if (!advancedMode)
+            {
+                if (double.TryParse(inputBox.Text, out result))
+                {
+                    operation = "^";
+                    isOperationPerformed = true;
+                    lblText.Text = result + " ^ ";
+                }
+            }
+            else
+            {
+                HandleInput(sender);
+            }
+        }
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-
-            if (AdvancedMode == false)
+            if (!advancedMode)
             {
+                if (!double.TryParse(inputBox.Text, out double secondOperand))
+                {
+                    return;
+                }
+
                 switch (operation)
                 {
                     case "+":
-                        inputBox.Text = (result + Double.Parse(inputBox.Text)).ToString();
-
+                        result += secondOperand;
                         break;
                     case "-":
-                        inputBox.Text = (result - Double.Parse(inputBox.Text)).ToString();
+                        result -= secondOperand;
                         break;
                     case "*":
-                        inputBox.Text = (result * Double.Parse(inputBox.Text)).ToString();
+                        result *= secondOperand;
                         break;
                     case "/":
-                        inputBox.Text = (result / Double.Parse(inputBox.Text)).ToString();
+                        if (secondOperand == 0)
+                        {
+                            inputBox.Text = "Cannot divide by zero";
+                            return;
+                        }
+                        result /= secondOperand;
                         break;
                     case "^":
-                        inputBox.Text = Math.Pow(result, Double.Parse(inputBox.Text)).ToString();
+                        result = Math.Pow(result, secondOperand);
                         break;
                 }
 
+                inputBox.Text = result.ToString();
+                lblText.Text = "";
+                isOperationPerformed = true;
             }
-            Expression_Click(sender, e);
-
+            else
+            {
+                inputBox.Text = ExpandFoilExpression(inputBox.Text);
+                lblText.Text = inputBox.Text;
+            }
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private string ExpandFoilExpression(string expression)
         {
-            Operator_Click(sender, e);
-            Expression_Click(sender, e);
+            expression = expression.Replace(" ", "");
+            Match match = Regex.Match(expression, @"^\((?:([+-]?\d*)x|([+-]?\d+))\+?([+-]?\d+)?\)\((?:([+-]?\d*)x|([+-]?\d+))\+?([+-]?\d+)?\)$");
 
+            Match simpleMatch = Regex.Match(expression, @"^\(([+-]?\d*x?[+-]?\d*)\)\(([+-]?\d*x?[+-]?\d*)\)$");
+
+            if (!simpleMatch.Success)
+            {
+                return "Invalid FOIL format: (ax+b)(cx+d)";
+            }
+
+            string factor1 = simpleMatch.Groups[1].Value;
+            string factor2 = simpleMatch.Groups[2].Value;
+
+            ParseTerm(factor1, out int a, out int b);
+            ParseTerm(factor2, out int c, out int d);
+
+            int x2Coeff = a * c;
+            int xCoeff = (a * d) + (b * c);
+            int constCoeff = b * d;
+
+            string resultStr = "";
+
+            if (x2Coeff != 0)
+            {
+                resultStr += (x2Coeff == 1 ? "x^2" : (x2Coeff == -1 ? "-x^2" : x2Coeff + "x^2"));
+            }
+
+            if (xCoeff != 0)
+            {
+                if (xCoeff > 0 && resultStr.Length > 0)
+                {
+                    resultStr += "+";
+                }
+                resultStr += (xCoeff == 1 ? "x" : (xCoeff == -1 ? "-x" : xCoeff + "x"));
+            }
+
+            if (constCoeff != 0)
+            {
+                if (constCoeff > 0 && resultStr.Length > 0)
+                {
+                    resultStr += "+";
+                }
+                resultStr += constCoeff;
+            }
+
+            return string.IsNullOrEmpty(resultStr) ? "0" : resultStr;
         }
 
-        private void btnMinus_Click(object sender, EventArgs e)
+        private void ParseTerm(string factor, out int xCoeff, out int constCoeff)
         {
-            Operator_Click(sender, e);
-            Expression_Click(sender, e);
-        }
+            xCoeff = 0;
+            constCoeff = 0;
 
-        private void btnDevide_Click(object sender, EventArgs e)
-        {
-            Operator_Click(sender, e);
-            Expression_Click(sender, e);
-        }
+            Match match = Regex.Match(factor, @"^([+-]?\d*)x([+-]\d+)?$");
+            if (match.Success)
+            {
+                string xStr = match.Groups[1].Value;
+                if (xStr == "" || xStr == "+")
+                {
+                    xCoeff = 1;
+                }
+                else if (xStr == "-")
+                {
+                    xCoeff = -1;
+                }
+                else
+                {
+                    int.TryParse(xStr, out xCoeff);
+                }
 
-        private void btnMultiply_Click(object sender, EventArgs e)
-        {
-            Operator_Click(sender, e);
-            Expression_Click(sender, e);
+                if (match.Groups[2].Value != "")
+                {
+                    int.TryParse(match.Groups[2].Value, out constCoeff);
+                }
+                return;
+            }
+
+            Match matchXOnly = Regex.Match(factor, @"^([+-]?\d+)x$");
+            if (matchXOnly.Success)
+            {
+                int.TryParse(matchXOnly.Groups[1].Value, out xCoeff);
+                return;
+            }
+
+            Match matchConstOnly = Regex.Match(factor, @"^([+-]?\d+)$");
+            if (matchConstOnly.Success)
+            {
+                int.TryParse(matchConstOnly.Groups[1].Value, out constCoeff);
+                return;
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             lblText.Text = "";
-            inputBox.Clear();
-
+            inputBox.Text = "0";
+            result = 0;
+            operation = "";
+            isOperationPerformed = false;
         }
-
-        //Brackets and x
-        private void btnOpenBracket_Click(object sender, EventArgs e)
-        {
-            Expression_Click(sender, e);
-        }
-
-       
-        private void btnCloseBracket_Click_1(object sender, EventArgs e)
-        {
-            Expression_Click(sender, e);
-        }
-        private void btnXvariable_Click(object sender, EventArgs e)
-        {
-            Expression_Click(sender, e);
-        }
-
-
-        //Split the process into two parts: store the base number when the power button is clicked,
-        //and execute Math.Pow when the equal button is pressed.
-
-
-        private void btnPower_Click(object sender, EventArgs e)
-        {
-            if (AdvancedMode == false)
-            {
-
-                result = Double.Parse(inputBox.Text);
-                operation = "^";
-                isOperationPerformed = true;
-
-                lblText.Text = result.ToString() + operation;
-            }
-
-            Expression_Click(sender, e);
-        }
-
-        //foil button click event
 
         private void btnFoil_Click(object sender, EventArgs e)
         {
-            AdvancedMode = true;
-            inputBox.Clear();
-            lblText.Text = " "; 
+            advancedMode = !advancedMode;
+            inputBox.Text = "0";
+            lblText.Text = advancedMode ? "Advanced Mode (FOIL Enabled)" : "";
         }
-
-        
     }
 }
