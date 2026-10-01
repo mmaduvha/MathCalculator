@@ -30,6 +30,9 @@
         {
             this.inputBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCloseBracket = new System.Windows.Forms.Button();
+            this.btnOpenBracket = new System.Windows.Forms.Button();
+            this.btnFoil = new System.Windows.Forms.Button();
             this.btnPower = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
@@ -49,10 +52,7 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
-            this.btnFoil = new System.Windows.Forms.Button();
-            this.btnOpenBracket = new System.Windows.Forms.Button();
-            this.btnCloseBracket = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnXvariable = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnXvariable);
             this.panel2.Controls.Add(this.btnCloseBracket);
             this.panel2.Controls.Add(this.btnOpenBracket);
             this.panel2.Controls.Add(this.btnFoil);
@@ -97,6 +97,45 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(446, 385);
             this.panel2.TabIndex = 2;
+            // 
+            // btnCloseBracket
+            // 
+            this.btnCloseBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnCloseBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCloseBracket.Location = new System.Drawing.Point(356, 88);
+            this.btnCloseBracket.Name = "btnCloseBracket";
+            this.btnCloseBracket.Size = new System.Drawing.Size(66, 68);
+            this.btnCloseBracket.TabIndex = 20;
+            this.btnCloseBracket.Text = ")";
+            this.btnCloseBracket.UseVisualStyleBackColor = false;
+            this.btnCloseBracket.Click += new System.EventHandler(this.btnCloseBracket_Click_1);
+            // 
+            // btnOpenBracket
+            // 
+            this.btnOpenBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnOpenBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnOpenBracket.Location = new System.Drawing.Point(284, 88);
+            this.btnOpenBracket.Name = "btnOpenBracket";
+            this.btnOpenBracket.Size = new System.Drawing.Size(66, 68);
+            this.btnOpenBracket.TabIndex = 19;
+            this.btnOpenBracket.Text = "(";
+            this.btnOpenBracket.UseVisualStyleBackColor = false;
+            this.btnOpenBracket.Click += new System.EventHandler(this.btnOpenBracket_Click);
+            // 
+            // btnFoil
+            // 
+            this.btnFoil.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnFoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnFoil.Location = new System.Drawing.Point(113, 14);
+            this.btnFoil.Name = "btnFoil";
+            this.btnFoil.Size = new System.Drawing.Size(155, 68);
+            this.btnFoil.TabIndex = 18;
+            this.btnFoil.Text = "FOIL";
+            this.btnFoil.UseVisualStyleBackColor = false;
+            this.btnFoil.Click += new System.EventHandler(this.btnFoil_Click);
             // 
             // btnPower
             // 
@@ -333,54 +372,18 @@
             this.lblText.Size = new System.Drawing.Size(0, 29);
             this.lblText.TabIndex = 3;
             // 
-            // btnFoil
+            // btnXvariable
             // 
-            this.btnFoil.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btnFoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFoil.Location = new System.Drawing.Point(113, 14);
-            this.btnFoil.Name = "btnFoil";
-            this.btnFoil.Size = new System.Drawing.Size(155, 68);
-            this.btnFoil.TabIndex = 18;
-            this.btnFoil.Text = "FOIL";
-            this.btnFoil.UseVisualStyleBackColor = false;
-            this.btnFoil.Click += new System.EventHandler(this.btnFoil_Click);
-            // 
-            // btnOpenBracket
-            // 
-            this.btnOpenBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btnOpenBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOpenBracket.Location = new System.Drawing.Point(284, 88);
-            this.btnOpenBracket.Name = "btnOpenBracket";
-            this.btnOpenBracket.Size = new System.Drawing.Size(66, 68);
-            this.btnOpenBracket.TabIndex = 19;
-            this.btnOpenBracket.Text = "(";
-            this.btnOpenBracket.UseVisualStyleBackColor = false;
-            // 
-            // btnCloseBracket
-            // 
-            this.btnCloseBracket.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btnCloseBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseBracket.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCloseBracket.Location = new System.Drawing.Point(356, 88);
-            this.btnCloseBracket.Name = "btnCloseBracket";
-            this.btnCloseBracket.Size = new System.Drawing.Size(66, 68);
-            this.btnCloseBracket.TabIndex = 20;
-            this.btnCloseBracket.Text = ")";
-            this.btnCloseBracket.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(18, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 68);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "x";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnXvariable.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnXvariable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXvariable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnXvariable.Location = new System.Drawing.Point(18, 14);
+            this.btnXvariable.Name = "btnXvariable";
+            this.btnXvariable.Size = new System.Drawing.Size(66, 68);
+            this.btnXvariable.TabIndex = 22;
+            this.btnXvariable.Text = "x";
+            this.btnXvariable.UseVisualStyleBackColor = false;
+            this.btnXvariable.Click += new System.EventHandler(this.btnXvariable_Click);
             // 
             // Home
             // 
@@ -430,7 +433,7 @@
         private System.Windows.Forms.Button btnFoil;
         private System.Windows.Forms.Button btnOpenBracket;
         private System.Windows.Forms.Button btnCloseBracket;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXvariable;
     }
 }
 

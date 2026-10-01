@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//I haven't gone through the equation process here,
+//just showing the expression and having all the buttons be able to make an expression,
+//when foil is pressed
 namespace AdvancedMathCalculator
 {
     public partial class Home : Form
@@ -218,17 +220,40 @@ namespace AdvancedMathCalculator
 
         }
 
+        //Brackets and x
+        private void btnOpenBracket_Click(object sender, EventArgs e)
+        {
+            Expression_Click(sender, e);
+        }
+
+       
+        private void btnCloseBracket_Click_1(object sender, EventArgs e)
+        {
+            Expression_Click(sender, e);
+        }
+        private void btnXvariable_Click(object sender, EventArgs e)
+        {
+            Expression_Click(sender, e);
+        }
+
+
         //Split the process into two parts: store the base number when the power button is clicked,
         //and execute Math.Pow when the equal button is pressed.
 
 
         private void btnPower_Click(object sender, EventArgs e)
         {
-            result = Double.Parse(inputBox.Text);
-            operation = "^";
-            isOperationPerformed = true;
+            if (AdvancedMode == false)
+            {
 
-            lblText.Text = result.ToString() + operation;
+                result = Double.Parse(inputBox.Text);
+                operation = "^";
+                isOperationPerformed = true;
+
+                lblText.Text = result.ToString() + operation;
+            }
+
+            Expression_Click(sender, e);
         }
 
         //foil button click event
@@ -238,18 +263,8 @@ namespace AdvancedMathCalculator
             AdvancedMode = true;
             inputBox.Clear();
             lblText.Text = " "; 
-
-
-
-
-
-
         }
 
         
-
-        
-       
-
     }
 }
