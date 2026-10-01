@@ -60,6 +60,28 @@ namespace AdvancedMathCalculator
 
         }
 
+        private void Expression_Click(object sender, EventArgs e)
+        {
+            if (AdvancedMode == true)
+            {
+                Button button = (Button)sender;
+
+                //to display the expression on the label.
+
+                inputBox.Text = button.Text;
+                if (lblText.Text == " ")
+                {
+                    lblText.Text = button.Text;
+                }
+                else
+                {
+                    lblText.Text += " " + button.Text;
+                }
+
+
+            }
+        }
+
         private void btnOne_Click(object sender, EventArgs e)
         {
             Button_Click(sender, e);
@@ -224,23 +246,9 @@ namespace AdvancedMathCalculator
 
         }
 
-        private void Expression_Click(object sender, EventArgs e)
-        {
-            if (AdvancedMode == true)
-            {
-                Button button = (Button)sender;
-                inputBox.Text += button.Text;
-                if (lblText.Text == " ")
-                {
-                    lblText.Text = button.Text;
-                }
-                else
-                {
-                    lblText.Text += " " + button.Text;
-                }
-            }
+        
 
-        }
+        
        
 
     }
