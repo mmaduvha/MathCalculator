@@ -67,7 +67,7 @@
             this.inputBox.Size = new System.Drawing.Size(446, 38);
             this.inputBox.TabIndex = 0;
             this.inputBox.Text = "0";
-            this.inputBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+           // this.inputBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // panel2
             // 
